@@ -19,72 +19,117 @@ val animalsInShelter = listOf(
 
 fun main() {
     // You can write some code here to test if below functions work
+//    allDogs()
+//    allCats()
+//    allDogsInSortedInAlphabeticalOrder()
+//    allCatsInSortedInReverseAlphabeticalOrder()
+//    animalsWhoWeighsLessThanFour()
+//    catsSortedByTheirAgesInAscendingOrder()
+//    dogSortedByTheirAgesInDescendingOrder()
+//    animalsWhoHasSpaceCharacterInTheirName()
+//    numberOfAnimalsWhichAreOlderThanThree()
+//    sumOfWeightsOfAllCats()
+//    catWithMaximumAge()
+//    dogWithLongestName()
+//    animalsWhoAreYoungerThanFourAndHeavierThanTwo()
+//    areAllCatsHeavierThanAllDogs()
+//    areThereMoreCatsThanTheDogs()
+//    isThereAnyAnimalWhichHasLetterCInTheirName()
+    findTheAnimalWithNameHugo()
 }
 
 fun allDogs() {
-    TODO("implement")
+    println(animalsInShelter.filterIsInstance<Dog>())
 }
 
 fun allCats() {
-    TODO("implement")
+    println(animalsInShelter.filterIsInstance<Cat>())
 }
 
 fun allDogsInSortedInAlphabeticalOrder(): List<Dog> {
-    TODO("implement")
+    animalsInShelter.filterIsInstance<Dog>().sortedBy { it.name }.forEach {
+        println(it.name)
+    }
+    return animalsInShelter.filterIsInstance<Dog>().sortedBy { it.name }
 }
 
 fun allCatsInSortedInReverseAlphabeticalOrder(): List<Cat> {
-    TODO("implement")
+    animalsInShelter.filterIsInstance(Cat::class.java).sortedByDescending { it.name }.forEach {
+        println(it.name)
+    }
+    return animalsInShelter.filterIsInstance(Cat::class.java).sortedByDescending { it.name }
 }
 
 fun animalsWhoWeighsLessThanFour(): List<Animal> {
-    TODO("implement")
+    animalsInShelter.filter { it.weight < 4 }.forEach { println("${it.name} ${it.weight}") }
+    return animalsInShelter.filter { it.weight < 4 }
 }
 
 fun catsSortedByTheirAgesInAscendingOrder(): List<Cat> {
-    TODO("implement")
+    animalsInShelter.filterIsInstance<Cat>().sortedBy { it.age }.forEach { println("${it.name} ${it.age}") }
+    return animalsInShelter.filterIsInstance<Cat>().sortedBy { it.age }
 }
 
 fun dogSortedByTheirAgesInDescendingOrder(): List<Dog> {
-    TODO("implement")
+    animalsInShelter.filterIsInstance<Dog>().sortedByDescending { it.age }.forEach { println("${it.name} ${it.age}") }
+    return animalsInShelter.filterIsInstance<Dog>().sortedByDescending { it.age }
 }
 
 fun animalsWhoHasSpaceCharacterInTheirName(): List<Animal> {
-    TODO("implement")
+    animalsInShelter.filter { it.name.any { char -> char == ' ' } }.forEach { println("${it.name}") }
+    return animalsInShelter.filter { it.name.any { char -> char == ' ' } }
 }
 
 fun numberOfAnimalsWhichAreOlderThanThree(): Int {
-    TODO("implement")
+    println(animalsInShelter.count { it.age > 3 })
+    return animalsInShelter.count { it.age > 3 }
 }
 
 fun sumOfWeightsOfAllCats(): Double {
-    TODO("implement")
+    println(animalsInShelter.filterIsInstance<Cat>().sumByDouble { it.weight })
+    return animalsInShelter.filterIsInstance<Cat>().sumByDouble { it.weight }
 }
 
 fun catWithMaximumAge(): Cat {
-    TODO("implement")
+    println(animalsInShelter.filterIsInstance<Cat>().maxByOrNull { it.age }?.name)
+    return animalsInShelter.filterIsInstance<Cat>().maxByOrNull { it.age }!!
 }
 
 fun dogWithLongestName(): Dog {
-    TODO("implement")
+    println(animalsInShelter.filterIsInstance<Dog>().maxByOrNull { it.name.length }?.name)
+    return animalsInShelter.filterIsInstance<Dog>().maxByOrNull { it.name.length }!!
 }
 
 fun animalsWhoAreYoungerThanFourAndHeavierThanTwo(): List<Animal> {
-    TODO("implement")
+    animalsInShelter.filter { it.age < 4 && it.weight > 2 }.forEach { println("${it.name} ${it.age} ${it.weight}") }
+    return animalsInShelter.filter { it.age < 4 && it.weight > 2 }
 }
 
 fun areAllCatsHeavierThanAllDogs(): Boolean {
-    TODO("implement")
+    println(
+        "%s %s".format(
+            animalsInShelter.filterIsInstance<Cat>().sumByDouble { it.weight },
+            animalsInShelter.filterIsInstance<Dog>().sumByDouble { it.weight })
+    )
+    println(
+        animalsInShelter.filterIsInstance<Cat>().sumByDouble { it.weight } > animalsInShelter.filterIsInstance<Dog>()
+            .sumByDouble { it.weight })
+    return animalsInShelter.filterIsInstance<Cat>().sumByDouble { it.weight } > animalsInShelter.filterIsInstance<Dog>()
+        .sumByDouble { it.weight }
 }
 
 fun areThereMoreCatsThanTheDogs(): Boolean {
-    TODO("implement")
+    println(animalsInShelter.filterIsInstance<Cat>().size > animalsInShelter.filterIsInstance<Dog>().size)
+    return animalsInShelter.filterIsInstance<Cat>().size > animalsInShelter.filterIsInstance<Dog>().size
 }
 
 fun isThereAnyAnimalWhichHasLetterCInTheirName(): Boolean {
-    TODO("implement")
+    println(animalsInShelter.any { it.name.any { char -> char == 'C' } })
+    return animalsInShelter.any { it.name.any { char -> char == 'C' } }
 }
 
 fun findTheAnimalWithNameHugo(): Animal {
-    TODO("implement")
+    val hugo = animalsInShelter.find { it.name == "Hugo" }
+    println("name: ${hugo?.name} age: ${hugo?.age} weight: ${hugo?.weight}")
+    return animalsInShelter.find { it.name == "Hugo" }!!
 }
